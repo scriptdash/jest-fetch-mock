@@ -7,14 +7,17 @@ Fetch is the new way to do HTTP requests in the browser, and it can be used in o
 To setup your fetch mock you need to do the following things:
 
 ```
-$ npm install --save-dev jest-fetch-mock
+yarn add --dev scriptdash/jest-fetch-mock
 ```
 
 Create a setupJest file to setup the mock or add this to an existing setupFile:
 
 ```js
 //setupJest.js
-global.fetch = require('jest-fetch-mock');
+import * as fetchGlobals from 'whatwg-fetch'
+import fetchMock from 'jest-fetch-mock'
+
+global.fetch = fetchMock(fetchGlobals)
 ```
 
 Add the setupFile to your jest config in package.json:
